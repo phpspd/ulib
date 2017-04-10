@@ -23,22 +23,25 @@
         }
         
         function listen() {
-            $(document).on("submit", "form[data-name='searchBooks']", function(event) {
+            $(document).on("submit", options.search.input, function(event) {
                 event.preventDefault();
-                let query = $(this).find("input[name='query']").val().toLowerCase();
-                
-                if (query != "") {
-                    core.module("Books").filter(module.modName, function(items) {
-                        let filterItems = [];
-                        for (let i = 0; i < items.length; ++i) {
-                            if (items[i]["title"].toLowerCase().indexOf(query) >= 0) {
-                                filterItems.push(items[i]);
+                let query = $(this).find("input[name='query']").val().toLowerCase(),
+                    books = core.module("Books");
+                    
+                if (books) {
+                    if (query != "") {
+                        books.filter(module.modName, function(items) {
+                            let filterItems = [];
+                            for (let i = 0; i < items.length; ++i) {
+                                if (items[i]["title"].toLowerCase().indexOf(query) >= 0) {
+                                    filterItems.push(items[i]);
+                                }
                             }
-                        }
-                        return filterItems;
-                    });
-                } else {
-                    core.module("Books").removeFilter(module.modName);
+                            return filterItems;
+                        });
+                    } else {
+                        books.removeFilter(module.modName);
+                    }
                 }
             });
         }

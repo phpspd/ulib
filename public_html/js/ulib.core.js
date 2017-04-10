@@ -89,6 +89,9 @@
         sort: {
             input: "form[data-name='sortBooks'] input"
         },
+        search: {
+            input: "form[data-name='searchBooks']"
+        },
         tpl: {
             items: "#uLibBooksTpl",
             forms: "#uLibFormTpl"

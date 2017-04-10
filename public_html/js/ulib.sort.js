@@ -29,19 +29,22 @@
         function listen() {
             $(document).on(core.events.initComplete, initComplete);
             $(document).on("change", options.sort.input, function(event) {
-                let field = $(this).attr('value');
+                let field = $(this).attr('value'),
+                    books = core.module("Books");
                 
-                core.module("Books").filter(module.modName, function(items) {
-                    for (let i = 0; i < items.length-1; ++i) {
-                        if (items[i][field] < items[i+1][field]) {
-                            let tmp = items[i];
-                            items[i] = items[i+1];
-                            items[i+1] = tmp;
-                            i = -1;
+                if (books) {
+                    core.module("Books").filter(module.modName, function(items) {
+                        for (let i = 0; i < items.length-1; ++i) {
+                            if (items[i][field] < items[i+1][field]) {
+                                let tmp = items[i];
+                                items[i] = items[i+1];
+                                items[i+1] = tmp;
+                                i = -1;
+                            }
                         }
-                    }
-                    return items;
-                });
+                        return items;
+                    });
+                }
             });
         }
         
