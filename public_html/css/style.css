@@ -1,0 +1,89 @@
+html, body {
+    width:100%;
+    min-width:330px;
+    margin:0;
+    padding:0;
+    background:#fff;
+}
+input[type="text"] {
+    width:160px;
+    height:15px;
+}
+.fleft {
+    float:left;
+}
+.inline {
+    display:inline-block;
+}
+.library {
+    width:100%;
+    padding:15px;
+    box-sizing:border-box;
+}
+.content {
+    display:inline-block;
+    float:left;
+}
+.form-add-container .input-container.submit {
+    text-align:center;
+}
+.form-search-container .input-container.submit {
+    text-align:right;
+}
+.form {
+    display:inline-block;
+    position:relative;
+    min-width:230px;
+    margin:15px;
+    padding:5px 15px;
+    border:1px #000 solid;
+    box-sizing:border-box;
+    vertical-align:top;
+}
+.form .form-title {
+    position:absolute;
+    top:-15px;
+    left:15px;
+    font:15px/20px Tahoma, sans-serif;
+    padding:3px 5px;
+    background:#fff;
+}
+.form .input-container {
+    margin:10px 0;
+}
+.item {
+    display:inline-block;
+    width:300px;
+    margin:15px;
+    padding:15px;
+    border:1px #000 solid;
+    box-sizing:border-box;
+    vertical-align:top;
+}
+.item:hover {
+    background-color:#efefef;
+}
+.item .item-buttons .btn {
+    width:34px;
+    height:34px;
+    background-color:#fff;
+    border:1px #444 solid;
+    padding:0;
+    margin:10px 10px 0 0;
+    cursor:pointer;
+    outline:none;
+}
+.item .item-buttons .btn:hover {
+    background-color:#d9d9d9;
+}
+.item .item-buttons .btn.item-edit {
+    background-image:url(../images/edit.png);
+    background-repeat:no-repeat;
+}
+.item .item-buttons .btn.item-remove {
+    background-image:url(../images/trash.png);
+    background-repeat:no-repeat;
+}
+input.error {
+    border-color:#f55;
+}

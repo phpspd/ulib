@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="favicon.ico" rel="shortcut icon">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/KanbanSolutions/jquery-tmpl/master/jquery.tmpl.js"></script>
+        <script type="text/javascript" src="http://borismoore.github.io/jsrender/jsrender.js"></script>
+        <script type="text/javascript" src="js/ulib.core.js"></script>
+        <script type="text/javascript" src="js/ulib.books.js"></script>
+        <script type="text/javascript" src="js/ulib.forms.js"></script>
+        <script type="text/javascript" src="js/ulib.sort.js"></script>
+        <script type="text/javascript" src="js/ulib.search.js"></script>
+        <script type="text/javascript" src="js/ulib.validate.js"></script>
+        <link rel="stylesheet" href="css/style.css" media="all" />
+    </head>
+    <body>
+        <script id="uLibFormTpl" type="text/x-jquery-tmpl">
+            <form class="{%= form.class%}" data-name="{%= form.name%}" data-event="{%= form.event%}">
+                <div class="form-title">{%= form.title%}</div>
+                {%each form.inputs%}
+                    {%if type == "hidden"%}
+                        <input type="hidden" name="{%= name%}" value="{%= value%}" />
+                    {%else%}
+                        <div class="input-container {%= type %}">
+                            {%if title%}
+                                <div class="input-title">{%= title%}</div>
+                            {%/if%}
+                            <input type="{%= type%}" name="{%= name%}" value="{%= value%}"
+                                data-type="{%= dataType%}"{%if require%} data-require="{%= require%}"{%/if%}\n\
+                                {%if checked%} checked="checked"{%/if%} />
+                            {%if inlineTitle%}
+                                <span class="input-title">${inlineTitle}</span>
+                            {%/if%}
+                        </div>
+                    {%/if%}
+                {%/each%}
+            </form>
+        </script>
+        <script id="uLibBooksTpl" type="text/x-jquery-tmpl">
+            {%each items%}
+                <div class="item">
+                    <div class="item-title">{%= title%}</div>
+                    <div class="item-author">Автор: {%= author%}</div>
+                    <div class="item-buttons">
+                        <button class="btn item-edit" data-item-id="{%= id%}" data-form-name="addBook"></button>
+                        <button class="btn item-remove" data-item-id="{%= id%}"></button>
+                    </div>
+                </div>
+            {%/each%}
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                uLib.init();
+            });
+        </script>
+        <div class="library">
+            <div class="form-add-container fleft"></div>
+            <div class="top">
+                <div class="form-sort-container inline"></div>
+                <div class="form-search-container inline"></div>
+            </div>
+            <div class="items"></div>
+        </div>
+    </body>
+</html>
